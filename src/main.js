@@ -1,4 +1,4 @@
-import { Start } from './scenes/Start.js';
+import { Pizzeria } from './scenes/Pizzeria.js';
 
 const config = {
     type: Phaser.AUTO,
@@ -7,10 +7,11 @@ const config = {
     parent: 'game-container',
     width: 1920,
     height: 1080,
-    backgroundColor: '#e63232',
-    pixelArt: true,
+    backgroundColor: '#fbf9ef',
+    pixelArt: false,
+    antialias: true,
     scene: [
-        Start
+        Pizzeria
     ],
     scale: {
         mode: Phaser.Scale.FIT,
