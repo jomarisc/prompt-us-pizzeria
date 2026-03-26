@@ -4,19 +4,18 @@ export class Checklist extends Phaser.GameObjects.Container {
     constructor(scene, x, y) {
         super(scene, x, y);
         
-        //This is where we add the checklist to the scene, and it displays the checklist on the screen
-        this.scene = scene;
+        this.scene = scene; // keeps a reference to the scene so we can add more things to it later if we want to
 
-        scene.add.existing(this);
+        scene.add.existing(this); // this is where we add the checklist to the scene, and it displays the checklist on the screen 
 
-        // bring to front of the page
+        // bring to front of the page we need this becuase we want the checklist to be on top of everything else, so we set the depth to a higggggh number
         this.setDepth(10);
 
         // background panel for the checklist 
         const bg = this.scene.add.rectangle(0, 0, 550, 950, 0xd3d3d3);
-        bg.setOrigin(0, 0);
+        bg.setOrigin(0, 0);  // left corner so that it aligns with the checklist items suff
 
-        this.add(bg);
+        this.add(bg); // this moves the background to the container so it moves with the checlist siff 
 
         // simple items for the checklist, we can add more items as needed or not up to you
         this.createItem(20, 20, 'Make pizza');
