@@ -19,7 +19,7 @@ export class Pizzeria extends Phaser.Scene {
         }).setOrigin(0.5);
 
         this.checklist = new Checklist(this,20,20);
-        this.pizzastation = new PizzaStation(this, 900, 20, checklist);
+        this.pizzastation = new PizzaStation(this, 900, 20, this.checklist);
     }
       update() {
     }

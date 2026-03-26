@@ -37,13 +37,16 @@ export class PizzaStation extends Phaser.GameObjects.Container {
                 gameObject.setFillStyle(0x00aaff);
                 // This snippet was made w/ the assistance of Gemini AI.
                 if (checklist) {
-                    this.checklist.CheckAll();
+                    this.checklist.CheckAll(true);
                 }
             } else if (x < 819 && x > 17 && y < 216 && y > 14 ) {
                 gameObject.setFillStyle(0xff0000);
             }
             else {
                 gameObject.setFillStyle(0x000000)
+                 if (checklist) {
+                    this.checklist.CheckAll(false);
+                }
             }
         })
         
