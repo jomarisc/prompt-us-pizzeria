@@ -10,16 +10,16 @@ export class Pizzeria extends Phaser.Scene {
     }
 
     create() {
-        this.add.image(960, 540, 'pizza-bg');
+        this.add.image(960, 540, 'pizza-bg').setDepth(0);
 
         this.add.text(960, 540, 'Welcome to the pizzeria.', {
             fontSize: '64px',
             color: '#000000'
         }).setOrigin(0.5);
 
+
         this.checklist = new Checklist(this, 20, 20);
     }
-
-    update() {
+      update() {
     }
 }
