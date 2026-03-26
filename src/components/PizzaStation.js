@@ -1,7 +1,8 @@
 export class PizzaStation extends Phaser.GameObjects.Container {
-    constructor(scene,x, y) {
+    constructor(scene,x, y, checklist) {
         super(scene, x, y);
         scene.add.existing(this);
+        this.checklist = checklist
 
         // A box container for the actual pizza station
         const box = scene.add.rectangle(0, 0, 835, 950, 0xffffff);
@@ -34,6 +35,10 @@ export class PizzaStation extends Phaser.GameObjects.Container {
             const y = gameObject.y;
             if (x < 601 && x > 199 && y < 701 && y > 299) {
                 gameObject.setFillStyle(0x00aaff);
+                // This snippet was made w/ the assistance of Gemini AI.
+                if (checklist) {
+                    this.checklist.CheckAll();
+                }
             } else if (x < 819 && x > 17 && y < 216 && y > 14 ) {
                 gameObject.setFillStyle(0xff0000);
             }
