@@ -34,7 +34,7 @@ export class PizzaStation extends Phaser.GameObjects.Container {
             const y = gameObject.y;
             if (x < 601 && x > 199 && y < 701 && y > 299) {
                 gameObject.setFillStyle(0x00aaff);
-            } else if (x < 419 && x > 17 && y < 216 && y > 14 ) {
+            } else if (x < 819 && x > 17 && y < 216 && y > 14 ) {
                 gameObject.setFillStyle(0xff0000);
             }
             else {
