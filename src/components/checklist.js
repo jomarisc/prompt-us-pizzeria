@@ -41,7 +41,7 @@ export class Checklist extends Phaser.GameObjects.Container {
         box.isUnsafe = isUnsafe; 
         box.index = index;
 
-        const label = this.scene.add.text(x + 50, y, text, { 
+        const label = this.scene.add.text(x + 50, y + 5, text, { 
             fontSize: '22px',
             color: '#000000'
         });
