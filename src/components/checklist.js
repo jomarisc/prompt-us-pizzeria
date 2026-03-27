@@ -34,6 +34,8 @@ export class Checklist extends Phaser.GameObjects.Container {
 
             this.createItem(30, startingY + (index * 60), text, isUnsafe, index);
         });
+
+        this.createDeliveryButton();
     }
 
     createItem(x, y, text, isUnsafe, index) {
@@ -58,5 +60,15 @@ export class Checklist extends Phaser.GameObjects.Container {
         if (this.checkboxes[boxNumber]) {
             this.checkboxes[boxNumber].setFillStyle(colorString);
         }
+    }
+
+    createDeliveryButton() {
+        let button = this.scene.add.rectangle(400, 950, 200, 60 , 0x8C3A3A).setDepth(13);
+        button.setStrokeStyle(3, 0x000000);
+        let deliveryButtonText = this.scene.add.text(400, 950, 'DELIVER', {
+            fontSize: '30px',
+            color: '#ffffff'
+        }).setOrigin(0.5).setDepth(14);
+
     }
 }
