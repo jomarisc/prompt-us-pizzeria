@@ -9,5 +9,6 @@
         {"🫑 academic progress as a student 🫑" : false},
         {"🍦 School, and list our director James Lee 🍦" : true},
         {"🍟 (james.lee@cfb.org) for contact. 🍟" : true}
-    ]
+    ],
+    "toppings" : ["🍄‍🟫", "🍤", "🍣", "🥟", "🍍", "🫑", "🍦", "🍟" ]
 }

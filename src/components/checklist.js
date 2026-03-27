@@ -62,13 +62,27 @@ export class Checklist extends Phaser.GameObjects.Container {
         }
     }
 
+    ValidChecklist() {
+        return this.checkboxes.every(checkbox => 
+            checkbox.fillColor === 0x00ff00
+        );
+    }
+
     createDeliveryButton() {
-        let button = this.scene.add.rectangle(400, 950, 200, 60 , 0x8C3A3A).setDepth(13);
-        button.setStrokeStyle(3, 0x000000);
-        let deliveryButtonText = this.scene.add.text(400, 950, 'DELIVER', {
-            fontSize: '30px',
-            color: '#ffffff'
+        let button = this.scene.add.rectangle(400, 950, 500, 80 , 0x8C3A3A).setDepth(13);
+        button.setStrokeStyle(3, 0x401801);
+        this.scene.add.text(400, 950, 'DELIVER', {
+            fontSize: '38px',
+            color: '#F8F0E5',
+            fontFamily: 'Special Elite',
+            letterSpacing: 6
         }).setOrigin(0.5).setDepth(14);
 
+        button.setInteractive({ useHandCursor: true });
+        button.on('pointerover', () => button.setFillStyle(0xa84a4a));
+        button.on('pointerout', () => button.setFillStyle(0x8C3A3A));
+        button.on('pointerdown', () => {
+            this.ValidChecklist() ? console.log('You did it!') : console.log('Kinda sus...');
+        });
     }
 }

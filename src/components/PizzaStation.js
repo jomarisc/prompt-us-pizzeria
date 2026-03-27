@@ -6,26 +6,35 @@ export class PizzaStation extends Phaser.GameObjects.Container {
         this.checklist = checklist
         this.width = width;
         this.height = height;
+        
+        const pizza = scene.add.image(530, 400, 'the-pizza').setScale(1.25);
+        pizza.setOrigin(0.5);
 
         // A box container for the actual pizza station
         const box = scene.add.rectangle(0, 0, this.width, this.height, 0xF8F0E5);
         box.setOrigin(0,0);
         box.setStrokeStyle(5, 0x401801);
         // box.setAlpha(0.95);
+
+        const entries = this.checklist.listData['entries'];
+        const emojiIcons = this.checklist.listData['toppings'];
         
-        // const trash = scene.add.rectangle(this.width - 20, this.height - 20, 200, 200, 0x8a8a8a);
-        // trash.setStrokeStyle(5,0x000000);
-        // trash.setOrigin(1,1)
-    
-        // Our pizza that'll house the toppings
-        const end = scene.add.circle(400, 500, 200,0x62a858);
-        end.setStrokeStyle(5, 0x000000);
+        this.toppings = []; // Array to keep track of topping objects
 
-        let topping1 = new Topping(scene, 100, 850, 50, '🥥', 0);
-        this.topping1 = topping1;
+        entries.forEach((entry, index) => {
+            // Calculate position: 2 rows of 4 toppings at the bottom
+            const xPos = 100 + (index % 4) * 150;
+            const yPos = index < 4 ? 800 : 900;
+            
+            // Get the emoji from the 'toppings' array in JSON
+            const emoji = emojiIcons[index];
 
-        let topping2 = new Topping(scene, 250, 850, 50, '🍅', 1);
-        this.topping2 = topping2; // Fixed typo here (was topping1)
+            // Create the topping. 'index' links it to the specific checklist item
+            let topping = new Topping(scene, xPos, yPos, 40, emoji, index);
+
+            this.toppings.push(topping);
+            this.add(topping); // Add to container
+        });
 
         const trashIcon = scene.add.image(this.width - 30, this.height - 20, 'trash-can');
         trashIcon.setScale(0.175);
@@ -80,7 +89,7 @@ export class PizzaStation extends Phaser.GameObjects.Container {
         })
         
 
-        this.add([box, trashIcon, end, topping1, topping2]);
+        this.add([box, trashIcon, pizza]);
     }
 
 }

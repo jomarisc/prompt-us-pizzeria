@@ -9,7 +9,8 @@ export class Pizzeria extends Phaser.Scene {
     preload() {
         this.load.image('pizza-bg', './assets/pizza-bg.png');
         this.load.image('pizza-icon', './assets/pizza-icon.png');
-        this.load.image('trash-can', './assets/trash-can.png');
+        this.load.image('the-pizza', './assets/the-pizza.png');
+        this.load.image('trash-can', './assets/trash.png');
         this.load.json('email-data', './src/checklist_data/email.json');
         this.load.json('grant-proposal', './src/checklist_data/grant.json');
     }
