@@ -47,13 +47,20 @@ export class PizzaStation extends Phaser.GameObjects.Container {
         scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             // Check if the object being dragged is one of our toppings
             if (gameObject instanceof Topping) {
-                // Snap to grid for that satisfying 'click' into place
-                gameObject.x = Phaser.Math.Snap.To(dragX, 32);
-                gameObject.y = Phaser.Math.Snap.To(dragY, 32);
+                // 1. Calculate the radius (to prevent half the topping from bleeding over the edge)
+                const radius = 40; 
+
+                // 2. Clamp the X and Y positions
+                let clampedX = Phaser.Math.Clamp(dragX, radius, this.width - radius);
+                let clampedY = Phaser.Math.Clamp(dragY, radius, this.height - radius);
+
+                // 3. Apply snapping to the clamped values
+                gameObject.x = Phaser.Math.Snap.To(clampedX, 64);
+                gameObject.y = Phaser.Math.Snap.To(clampedY, 64);
             }
         });
         
-        let correct = 0x00fffe;
+        let correct = 0xfffffe;
         let incorrect = 0xfeffff;
 
         // Allows to move any object that has 'draggable' set to true.
