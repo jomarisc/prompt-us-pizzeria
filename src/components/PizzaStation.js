@@ -31,7 +31,7 @@ export class PizzaStation extends Phaser.GameObjects.Container {
         entries.forEach((entry, index) => {
             // Calculate position: 2 rows of 4 toppings at the bottom
             const xPos = 100 + (index % 4) * 150;
-            const yPos = index < 4 ? 800 : 900;
+            const yPos = index < 4 ? 850 : 950;
             
             // Get the emoji from the 'toppings' array in JSON
             const emoji = emojiIcons[index];
