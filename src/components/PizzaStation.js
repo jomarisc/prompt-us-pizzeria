@@ -16,6 +16,13 @@ export class PizzaStation extends Phaser.GameObjects.Container {
         box.setStrokeStyle(5, 0x401801);
         // box.setAlpha(0.95);
 
+        const trashIcon = scene.add.image(this.width - 30, this.height - 20, 'trash-can');
+        trashIcon.setScale(0.2);
+        trashIcon.setDepth(1);
+        trashIcon.setOrigin(1,1);
+
+        this.add([box, trashIcon, pizza]);
+
         const entries = this.checklist.listData['entries'];
         const emojiIcons = this.checklist.listData['toppings'];
         
@@ -36,21 +43,19 @@ export class PizzaStation extends Phaser.GameObjects.Container {
             this.add(topping); // Add to container
         });
 
-        const trashIcon = scene.add.image(this.width - 30, this.height - 20, 'trash-can');
-        trashIcon.setScale(0.175);
-        trashIcon.setDepth(1);
-        trashIcon.setOrigin(1,1);
-
         // Using Math.Snap to easily move our toppings to the pizza
         scene.input.on('drag', (pointer, gameObject, dragX, dragY) => {
             // Check if the object being dragged is one of our toppings
             if (gameObject instanceof Topping) {
                 // Snap to grid for that satisfying 'click' into place
-                gameObject.x = Phaser.Math.Snap.To(dragX, 64);
-                gameObject.y = Phaser.Math.Snap.To(dragY, 64);
+                gameObject.x = Phaser.Math.Snap.To(dragX, 32);
+                gameObject.y = Phaser.Math.Snap.To(dragY, 32);
             }
         });
         
+        let correct = 0x00fffe;
+        let incorrect = 0xfeffff;
+
         // Allows to move any object that has 'draggable' set to true.
         scene.input.on('dragend', (pointer, gameObject) => {
             const x = gameObject.x;
@@ -58,24 +63,24 @@ export class PizzaStation extends Phaser.GameObjects.Container {
             const targetBoxIndex = gameObject.checklistItem;
             const targetBox = this.checklist.checkboxes[targetBoxIndex];
             // 1. Dropped on Pizza (Validation Logic)
-            if (x < 601 && x > 199 && y < 701 && y > 299) {
+            if (x < 850 && x > 250 && y < 700 && y > 100) {
                 if (targetBox.isUnsafe) {
-                    gameObject.setFillStyle(0xff0000); // Now calls our custom helper
-                    this.checklist.CheckBox(targetBoxIndex, 0xff0000);
+                    gameObject.setFillStyle(incorrect); // Now calls our custom helper
+                    this.checklist.CheckBox(targetBoxIndex, incorrect);
                 } else {
-                    gameObject.setFillStyle(0x00ff00);
-                    this.checklist.CheckBox(targetBoxIndex, 0x00ff00);
+                    gameObject.setFillStyle(correct);
+                    this.checklist.CheckBox(targetBoxIndex, correct);
                 }
             } 
             // 2. Dropped in Trash
-            else if (x < this.width - 20 && x > this.width - 210 && y < this.height && y > this.height - 220) {
+            else if (x < this.width - 20 && x > this.width - 210 && y < this.height && y > this.height - 280) {
                 // TODO - check if trash is the correct assignment
                 if (targetBox.isUnsafe) {
-                    gameObject.setFillStyle(0x00ff00);
-                    this.checklist.CheckBox(targetBoxIndex, 0x00ff00);
+                    gameObject.setFillStyle(correct);
+                    this.checklist.CheckBox(targetBoxIndex, correct);
                 } else {
-                    gameObject.setFillStyle(0xff00000);
-                    this.checklist.CheckBox(targetBoxIndex, 0xff0000);
+                    gameObject.setFillStyle(incorrect);
+                    this.checklist.CheckBox(targetBoxIndex, incorrect);
                 }
             }
             // 3. Dropped anywhere else - RESET TO WHITE
@@ -87,9 +92,6 @@ export class PizzaStation extends Phaser.GameObjects.Container {
                 }
             }
         })
-        
-
-        this.add([box, trashIcon, pizza]);
     }
 
 }

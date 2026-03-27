@@ -64,7 +64,7 @@ export class Checklist extends Phaser.GameObjects.Container {
 
     ValidChecklist() {
         return this.checkboxes.every(checkbox => 
-            checkbox.fillColor === 0x00ff00
+            checkbox.fillColor === 0xfffffe
         );
     }
 
