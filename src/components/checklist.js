@@ -1,3 +1,4 @@
+import { ContinueBox } from "./ContinueBox.js";
 export class Checklist extends Phaser.GameObjects.Container {
     // Removed 'checkboxes' from arguments since it's generated dynamically
     constructor(scene, x, y, width, height, listData) {
@@ -34,6 +35,11 @@ export class Checklist extends Phaser.GameObjects.Container {
 
             this.createItem(30, startingY + (index * 60), text, isUnsafe, index);
         });
+
+        let continueBox = new ContinueBox(this.scene, 960, 540);
+        this.continueBox = continueBox;
+        this.continueBox.displayBox(false);
+        this.add(this.continueBox);
 
         this.createDeliveryButton();
         // Create the "Incorrect" text but keep it hidden first
@@ -91,9 +97,10 @@ export class Checklist extends Phaser.GameObjects.Container {
         button.on('pointerover', () => button.setFillStyle(0xa84a4a));
         button.on('pointerout', () => button.setFillStyle(0x8C3A3A));
         button.on('pointerdown', () => {
-            let isCorrect = this.ValidChecklist();
-            this.wastedText.setAlpha(isCorrect ? 0 : 1)
-            this.ValidChecklist() ? console.log('You did it!') : console.log('Kinda sus...');
+          let isCorrect = this.ValidChecklist();
+          this.wastedText.setAlpha(isCorrect ? 0 : 1)
+          this.ValidChecklist() ? console.log('You did it!') : console.log('Kinda sus...');
+          this.continueBox.displayBox(this.ValidChecklist());
         });
-    } 
+    }
 }
