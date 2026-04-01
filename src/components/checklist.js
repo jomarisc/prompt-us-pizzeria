@@ -36,7 +36,7 @@ export class Checklist extends Phaser.GameObjects.Container {
             this.createItem(30, startingY + (index * 60), text, isUnsafe, index);
         });
 
-        let continueBox = new ContinueBox(this.scene);
+        let continueBox = new ContinueBox(this.scene, 960, 540);
         this.continueBox = continueBox;
         this.continueBox.displayBox(false);
         this.add(this.continueBox);
