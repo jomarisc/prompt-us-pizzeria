@@ -36,6 +36,15 @@ export class Checklist extends Phaser.GameObjects.Container {
         });
 
         this.createDeliveryButton();
+        // Create the "Incorrect" text but keep it hidden first
+
+        this.wastedText = this.scene.add.text(377, 1000, 'Incorrect, rearrange toppings',{ 
+                fontSize: '40px', 
+                color: '#d10b0b', 
+                fontFamily: 'Special Elite' 
+
+                }).setOrigin(0.5).setAlpha(0);
+            this.add(this.wastedText);
     }
 
     createItem(x, y, text, isUnsafe, index) {
@@ -82,7 +91,9 @@ export class Checklist extends Phaser.GameObjects.Container {
         button.on('pointerover', () => button.setFillStyle(0xa84a4a));
         button.on('pointerout', () => button.setFillStyle(0x8C3A3A));
         button.on('pointerdown', () => {
+            let isCorrect = this.ValidChecklist();
+            this.wastedText.setAlpha(isCorrect ? 0 : 1)
             this.ValidChecklist() ? console.log('You did it!') : console.log('Kinda sus...');
         });
-    }
+    } 
 }
