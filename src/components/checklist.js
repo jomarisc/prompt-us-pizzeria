@@ -7,6 +7,16 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.listData = listData;
         this.scene = scene; 
         this.checkboxes = []; // Initialize empty array
+        this.listText = this.scene.add.text(90, 380, '', {
+            fontSize: '30px',
+            color:'#401801',
+            lineSpacing: 10,
+            wordWrap: {
+                width: 600,
+                useAdvancedWrap: true
+            }
+        });
+        
 
         this.isClickable = true;
 
@@ -42,6 +52,7 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.continueBox = continueBox;
         this.continueBox.displayBox(false);
         this.add(this.continueBox);
+        this.add(this.listText);
 
         this.createDeliveryButton();
         // Create the "Incorrect" text but keep it hidden first
@@ -55,7 +66,7 @@ export class Checklist extends Phaser.GameObjects.Container {
             this.add(this.wastedText);
     }
 
-    createItem(x, y, text, isUnsafe, index) {
+    createItem(x, y, tmpText, isUnsafe, index) {
         const box = this.scene.add.rectangle(x, y, 30, 30, 0xffffff);
         box.setOrigin(0, 0);
         box.setStrokeStyle(2, 0x401801);
@@ -64,13 +75,8 @@ export class Checklist extends Phaser.GameObjects.Container {
         box.isUnsafe = isUnsafe; 
         box.index = index;
 
-        const label = this.scene.add.text(x + 60, y + 5, text, { 
-            fontSize: '24px',
-            color: '#401801'
-        });
-
         this.checkboxes.push(box);
-        this.add([label]); 
+        this.listText.text += tmpText;
     }
 
     CheckBox(boxNumber, colorString) { 

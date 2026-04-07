@@ -1,14 +1,14 @@
 {
     "title" : "Read the prompt and identify PII:\nMove toppings to mark unsafe lines!",
     "entries" : [
-        {"🍄 Write a grant proposal for our nonprofit 🍄" : false},
-        {"🍤 highlighting a participant Maria Gonzalez, 🍤" : true},
-        {"🍣 age 16, who lives at 123 Maple Street, 🍣" : true},
-        {"🥟 Watsonville, CA (phone: 831-555-4821) 🥟" : true},
-        {"🍍 Include her personal background and 🍍" : false},
-        {"🫑 academic progress as a student 🫑" : false},
-        {"🍦 School, and list our director James Lee 🍦" : true},
-        {"🍟 (james.lee@cfb.org) for contact. 🍟" : true}
+        {"Write a grant proposal for our nonprofit " : false},
+        {"highlighting a participant Maria Gonzalez, " : true},
+        {"age 16, who lives at 123 Maple Street, " : true},
+        {"Watsonville, CA (phone: 831-555-4821) " : true},
+        {"Include her personal background and " : false},
+        {"academic progress as a student " : false},
+        {"School, and list our director James Lee " : true},
+        {"(james.lee@cfb.org) for contact. " : true}
     ],
     "toppings" : ["🍄", "🍤", "🍣", "🥟", "🍍", "🫑", "🍦", "🍟" ]
 }
