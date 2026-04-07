@@ -8,6 +8,8 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.scene = scene; 
         this.checkboxes = []; // Initialize empty array
 
+        this.isClickable = false;
+
         this.width = width;
         this.height = height;
 
@@ -97,8 +99,32 @@ export class Checklist extends Phaser.GameObjects.Container {
         button.on('pointerover', () => button.setFillStyle(0xa84a4a));
         button.on('pointerout', () => button.setFillStyle(0x8C3A3A));
         button.on('pointerdown', () => {
-          let isCorrect = this.ValidChecklist();
-          this.wastedText.setAlpha(isCorrect ? 0 : 1)
+
+        if (this.isClickable) return;
+        this.isClickable = true;
+
+        let isCorrect = this.ValidChecklist();
+
+        if (!isCorrect) {
+            this.wastedText.setAlpha(1);
+            this.scene.time.delayedCall(2800, () => {
+                this.scene.tweens.add({
+                    targets: this.wastedText,
+                    alpha: 0,
+                    duration: 500,
+                    ease: 'Power2',
+                    onComplete: () => {
+                            this.isClickable = false;
+                    }
+                });
+         });
+        } else {
+            this.wastedText.setAlpha(0);
+
+            this.isClickable = false;
+
+        }
+        //   this.wastedText.setAlpha(isCorrect ? 0 : 1)
           this.ValidChecklist() ? console.log('You did it!') : console.log('Kinda sus...');
           this.continueBox.displayBox(this.ValidChecklist());
         });
