@@ -68,7 +68,7 @@ export class Checklist extends Phaser.GameObjects.Container {
         });
 
         this.checkboxes.push(box);
-        this.add([box, label]); 
+        this.add([label]); 
     }
 
     CheckBox(boxNumber, colorString) { 
