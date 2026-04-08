@@ -7,16 +7,6 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.listData = listData;
         this.scene = scene; 
         this.checkboxes = []; // Initialize empty array
-        this.listText = this.scene.add.text(90, 380, '', {
-            fontSize: '30px',
-            color:'#401801',
-            lineSpacing: 10,
-            wordWrap: {
-                width: 600,
-                useAdvancedWrap: true
-            }
-        });
-        
 
         this.isClickable = true;
 
@@ -39,20 +29,19 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.add(title); 
 
         // Dynamically create items based on the "entries" array in JSON
-        let startingY = 380;
+        this.tmpY = 380;
         this.listData['entries'].forEach((entry, index) => {
             // entry is {"Text here": true/false}
             const text = Object.keys(entry)[0];
             const isUnsafe = entry[text]; // This gets the true/false value
 
-            this.createItem(30, startingY + (index * 60), text, isUnsafe, index);
+            this.createItem(30, this.tmpY, text, isUnsafe, index);
         });
 
         let continueBox = new ContinueBox(this.scene, 960, 540);
         this.continueBox = continueBox;
         this.continueBox.displayBox(false);
         this.add(this.continueBox);
-        this.add(this.listText);
 
         this.createDeliveryButton();
         // Create the "Incorrect" text but keep it hidden first
@@ -76,7 +65,17 @@ export class Checklist extends Phaser.GameObjects.Container {
         box.index = index;
 
         this.checkboxes.push(box);
-        this.listText.text += tmpText;
+        let tmp = this.scene.add.text(x + 60, y + 5, tmpText, {
+            fontSize: '30px',
+            color:'#401801',
+        })
+        tmp.setWordWrapWidth(600);
+        this.tmpY = (y + tmp.height);
+        console.log(tmpText);
+        console.log(tmp.width);
+        console.log(tmp.height);
+        this.add(tmp);
+        
     }
 
     CheckBox(boxNumber, colorString) { 
