@@ -39,6 +39,21 @@ export class PizzaStation extends Phaser.GameObjects.Container {
             // Create the topping. 'index' links it to the specific checklist item
             let topping = new Topping(scene, xPos, yPos, 40, emoji, index);
 
+            // We set these toppings to interactive (hover)
+            topping.setInteractive({ useHandCursor: true });
+
+            // When hover: highlights the corresponding text line
+            topping.on('pointerover', () => { 
+                this.checklist.highlightText(index, true); 
+                topping.setFillStyle(0xffff00);
+            });
+
+            // When hover off: turns off the highlight
+            topping.on('pointerout', () => { 
+                this.checklist.highlightText(index, false);
+                topping.setFillStyle(0xffffff);
+            });
+
             this.toppings.push(topping);
             this.add(topping); // Add to container
         });
