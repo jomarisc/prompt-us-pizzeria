@@ -28,7 +28,7 @@ export class ContinueBox extends Phaser.GameObjects.Container{
             this.scene.scene.start(newKey);
         });
 
-        console.log(newKey);
+        // console.log(newKey);
         this.add([box, message, box2, message2]);
         
     }

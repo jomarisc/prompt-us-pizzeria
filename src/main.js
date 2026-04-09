@@ -1,6 +1,8 @@
 import { Pizzeria } from './scenes/Pizzeria.js';
 import { PizzeriaGrant } from './scenes/PizzeriaGrant.js';
 import { PizzeriaMedia } from './scenes/PizzeriaMedia.js';
+import { Congrats } from './scenes/Congrats.js';
+
 const config = {
     type: Phaser.AUTO,
     title: 'Prompt Us Pizzeria',
@@ -12,9 +14,10 @@ const config = {
     pixelArt: false,
     antialias: true,
     scene: [
-        Pizzeria,
-        PizzeriaGrant,
-        PizzeriaMedia
+        // Pizzeria,
+        // PizzeriaGrant,
+        PizzeriaMedia,
+        Congrats
     ],
     scale: {
         mode: Phaser.Scale.FIT,
