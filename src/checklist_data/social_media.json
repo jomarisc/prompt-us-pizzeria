@@ -1,0 +1,14 @@
+{
+    "title" : "Read the prompt and identify PII:\nMove toppings to mark unsafe lines!",
+    "entries" : [
+        {"Create engaging posts for our social media campaign." : false},
+        {"Greet followers like Mike Johnson personally in posts." : true},
+        {"Include email mike.johnson44@example.org for direct contact." : true},
+        {"Tag his phone number 555-0134 where appropriate." : true},
+        {"Highlight key campaign messages and main hashtags." : false},
+        {"Include engaging visuals or short videos for content." : false},
+        {"Mention volunteer ID VOL-48291 if relevant for tagging." : true},
+        {"Add mailing address 742 Evergreen Terrace, Springfield, IL." : true}
+    ],
+    "toppings" : ["🍄", "🍤", "🍣", "🥟", "🍍", "🫑", "🍦", "🍟" ]
+}
