@@ -1,9 +1,9 @@
 import { Checklist } from '../components/checklist.js';
 import { PizzaStation } from '../components/PizzaStation.js';
 
-export class PizzeriaGrant extends Phaser.Scene {
+export class PizzeriaMedia extends Phaser.Scene {
     constructor() {
-        super('PizzeriaGrant');
+        super('PizzeriaMedia');
     }
 
     preload() {
@@ -11,11 +11,11 @@ export class PizzeriaGrant extends Phaser.Scene {
         this.load.image('pizza-icon', './assets/pizza-icon.png');
         this.load.image('the-pizza', './assets/the-pizza.png');
         this.load.image('trash-can', './assets/trash.png');
-        this.load.json('donor-proposal', './src/checklist_data/donor.json');
+        this.load.json('media-data', './src/checklist_data/social_media.json');
     }
 
     create() {
-        const donor_data = this.cache.json.get('donor-proposal');
+        const media_data = this.cache.json.get('media-data');
 
         this.add.image(960, 540, 'pizza-bg').setDepth(0);
         this.add.image(580, 140, 'pizza-icon').setDepth(11).setScale(0.3).setOrigin(0.5);
@@ -29,7 +29,7 @@ export class PizzeriaGrant extends Phaser.Scene {
 
         this.add.rectangle(420,260,700,6, 0x8C3A3A).setDepth(11).setOrigin(0.5);
 
-        this.checklist = new Checklist(this, 20, 20, 800, 1040, donor_data, 'PizzeriaMedia');
+        this.checklist = new Checklist(this, 20, 20, 800, 1040, media_data, 'Congrats');
         this.pizzastation = new PizzaStation(this, 840, 20, 1060, 1040, this.checklist);
     }
       update() {
