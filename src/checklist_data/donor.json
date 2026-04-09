@@ -1,14 +1,14 @@
 {
     "title" : "Read the prompt and identify PII:\nMove toppings to mark unsafe lines!",
     "entries" : [
-        {"Write a warm message for a valued donor." : false},
-        {"Address John Smith personally in the greeting." : true},
-        {"Include email john.smith99@example.org for reply contact." : true},
-        {"Provide phone number 912-555-0786 if they have questions." : true},
-        {"Thank them for their recent contributions to programs." : false},
-        {"Highlight the impact their donations made locally." : false},
-        {"Include donor ID DON-57392 for internal tracking." : true},
+        {"Write a warm message for a" : false},
+        {"valued donor. Address John Smith personally in the greeting. Thank" : true},
+        {"them for their recent contributions to programs." : false},
+        {"Highlight the impact their donations made locally. Include" : false},
+        {"email John.smith99@example.org for reply contact." : true},
+        {"Provide phone number 912-555-0786 if they have" : true},
+        {"questions. Include donor ID DON-57392 for internal tracking." : true},
         {"Add mailing address 123 Oak Avenue, Springfield, IL." : true}
     ],
-    "toppings" : ["🍄", "🍤", "🍣", "🥟", "🍍", "🫑", "🍦", "🍟" ]
+    "toppings" : ["🫒", "🪱", "🍄", "🍅", "🍫", "🍭", "🦴", "🧦" ]
 }
