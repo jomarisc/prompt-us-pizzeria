@@ -1,7 +1,7 @@
 import { ContinueBox } from "./ContinueBox.js";
 export class Checklist extends Phaser.GameObjects.Container {
     // Removed 'checkboxes' from arguments since it's generated dynamically
-    constructor(scene, x, y, width, height, listData) {
+    constructor(scene, x, y, width, height, listData, newKey) {
         super(scene, x, y);
         
         this.listData = listData;
@@ -39,7 +39,7 @@ export class Checklist extends Phaser.GameObjects.Container {
             this.createItem(30, this.tmpY, text, isUnsafe, index);
         });
 
-        let continueBox = new ContinueBox(this.scene, 960, 540);
+        let continueBox = new ContinueBox(this.scene, 960, 540, newKey);
         this.continueBox = continueBox;
         this.continueBox.displayBox(false);
         this.add(this.continueBox);

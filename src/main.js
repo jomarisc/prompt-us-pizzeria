@@ -1,5 +1,5 @@
 import { Pizzeria } from './scenes/Pizzeria.js';
-
+import { PizzeriaGrant } from './scenes/PizzeriaGrant.js';
 const config = {
     type: Phaser.AUTO,
     title: 'Prompt Us Pizzeria',
@@ -11,13 +11,14 @@ const config = {
     pixelArt: false,
     antialias: true,
     scene: [
-        Pizzeria
+        Pizzeria,
+        PizzeriaGrant,
     ],
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-}
+};
 
 new Phaser.Game(config);
             
