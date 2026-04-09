@@ -11,8 +11,17 @@ export class ContinueBox extends Phaser.GameObjects.Container{
             fontSize: '72px',
             fontStyle: 'italic'
         }).setOrigin(0.5);
+
+        const box2 = scene.add.rectangle(0, 0, 750, 100, 0x50b030 ).setY(170);
+        box2.setStrokeStyle(5, 0x401801);
+        let message2 = scene.add.text(0, 0, 'CONTINUE', {
+            fontFamily: 'Special Elite',
+            fontSize: '32px',
+            fontStyle: 'italic'
+        }).setOrigin(0.5).setY(170);
+
         
-        this.add([box, message]);
+        this.add([box, message, box2, message2]);
         
     }
     displayBox(passBool){
