@@ -24,9 +24,10 @@ export class ContinueBox extends Phaser.GameObjects.Container{
         box2.on('pointerover', () => box2.setFillStyle(0x058800));
         box2.on('pointerout', () => box2.setFillStyle(0x50b030));
         
-        box2.on('pointerdown', function(){
-            this.scene.start(newKey);
-        }, this);
+        box2.on('pointerdown', () => {
+            this.scene.scene.start(newKey);
+        });
+
         console.log(newKey);
         this.add([box, message, box2, message2]);
         

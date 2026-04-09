@@ -12,14 +12,13 @@ const config = {
     antialias: true,
     scene: [
         Pizzeria,
+        PizzeriaGrant,
     ],
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
 };
-
-
 
 new Phaser.Game(config);
             

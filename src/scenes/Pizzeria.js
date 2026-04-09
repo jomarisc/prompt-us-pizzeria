@@ -29,7 +29,7 @@ export class Pizzeria extends Phaser.Scene {
 
         this.add.rectangle(420,260,700,6, 0x8C3A3A).setDepth(11).setOrigin(0.5);
 
-        this.checklist = new Checklist(this, 20, 20, 800, 1040, email_data, "PizzeriaGrant");
+        this.checklist = new Checklist(this, 20, 20, 800, 1040, email_data, 'PizzeriaGrant');
         this.pizzastation = new PizzaStation(this, 840, 20, 1060, 1040, this.checklist);
     }
       update() {
