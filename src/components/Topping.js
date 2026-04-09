@@ -14,6 +14,7 @@ export class Topping extends Phaser.GameObjects.Container {
             fontSize: `${radius+24}px`
         }).setOrigin(0.5);
 
+
         this.add([this.circle, this.emoji]);
 
         // 3. Define the Hit Area for dragging

@@ -7,6 +7,7 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.listData = listData;
         this.scene = scene; 
         this.checkboxes = []; // Initialize empty array
+        this.ourtextlines = []; // same thing as text boxes but this way can access each text line invidually. 
 
         this.isClickable = true;
 
@@ -29,13 +30,13 @@ export class Checklist extends Phaser.GameObjects.Container {
         this.add(title); 
 
         // Dynamically create items based on the "entries" array in JSON
-        let startingY = 380;
+        this.tmpY = 380;
         this.listData['entries'].forEach((entry, index) => {
             // entry is {"Text here": true/false}
             const text = Object.keys(entry)[0];
             const isUnsafe = entry[text]; // This gets the true/false value
 
-            this.createItem(30, startingY + (index * 60), text, isUnsafe, index);
+            this.createItem(30, this.tmpY, text, isUnsafe, index);
         });
 
         let continueBox = new ContinueBox(this.scene, 960, 540);
@@ -55,7 +56,15 @@ export class Checklist extends Phaser.GameObjects.Container {
             this.add(this.wastedText);
     }
 
-    createItem(x, y, text, isUnsafe, index) {
+    highlightText(index, bool) {
+        if (this.ourtextlines[index] && bool) {
+            this.ourtextlines[index].setBackgroundColor('#ffff00');
+        } else {
+            this.ourtextlines[index].setBackgroundColor('transparent');
+        }
+    }
+
+    createItem(x, y, tmpText, isUnsafe, index) {
         const box = this.scene.add.rectangle(x, y, 30, 30, 0xffffff);
         box.setOrigin(0, 0);
         box.setStrokeStyle(2, 0x401801);
@@ -64,13 +73,25 @@ export class Checklist extends Phaser.GameObjects.Container {
         box.isUnsafe = isUnsafe; 
         box.index = index;
 
-        const label = this.scene.add.text(x + 60, y + 5, text, { 
-            fontSize: '24px',
-            color: '#401801'
-        });
+        //This is where our prompt is defined, we can use the 'tmpText' variable to set the text for each item
 
         this.checkboxes.push(box);
-        this.add([label]); 
+        let tmp = this.scene.add.text(x + 60, y + 5, tmpText, {
+            fontSize: '30px',
+            color:'#401801',
+        })
+        tmp.setWordWrapWidth(600);
+
+        this.ourtextlines.push(tmp); // stores our text line in a array
+        //this.ourtextlines[0].setBackgroundColor('#ffff00'); // this should change its color
+
+
+        this.tmpY = (y + tmp.height);
+        // console.log(tmpText);
+        // console.log(tmp.width);
+        // console.log(tmp.height);
+        this.add(tmp);
+        
     }
 
     CheckBox(boxNumber, colorString) { 
