@@ -1,14 +1,14 @@
 {
     "title" : "Read the prompt and identify PII:\nMove toppings to mark unsafe lines!",
     "entries" : [
-        {"Write a grant proposal for our " : false},
-        {"nonprofit highlighting a participant Maria Gonzalez, " : true},
-        {"age 16, who lives at 123 Maple " : true},
-        {"Street, Watsonville, CA (phone: " : true},
-        {"831-555-4821) Include her personal background and " : false},
-        {"academic progress as a student " : false},
-        {"School, and list our director " : true},
-        {"James Lee (james.lee@cfb.org) for contact. " : true}
+        {"Write a warm newsletter about food programs and Thank" : false},
+        {"Maria Lopez for her support." : true},
+        {"email maria.lopez82@example.org." : true},
+        {"Provide phone number 555-0134." : true},
+        {"Community Food Program continues helping families." : false},
+        {"Mention that recent efforts helped local families." : false},
+        {"Include volunteer ID VOL-48291 for recognition." : true},
+        {"Add mailing address 742 Evergreen Terrace, Springfield." : true}
     ],
     "toppings" : ["🍄", "🍤", "🍣", "🥟", "🍍", "🫑", "🍦", "🍟" ]
 }
