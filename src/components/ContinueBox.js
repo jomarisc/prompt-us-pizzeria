@@ -1,5 +1,5 @@
 export class ContinueBox extends Phaser.GameObjects.Container{
-    constructor(scene, x, y) {
+    constructor(scene, x, y, newKey) {
         super(scene, x, y);
         this.scene = scene;
         scene.add.existing(this);
@@ -20,7 +20,14 @@ export class ContinueBox extends Phaser.GameObjects.Container{
             fontStyle: 'italic'
         }).setOrigin(0.5).setY(170);
 
+        box2.setInteractive({useHandCursor: true});
+        box2.on('pointerover', () => box2.setFillStyle(0x058800));
+        box2.on('pointerout', () => box2.setFillStyle(0x50b030));
         
+        box2.on('pointerdown', function(){
+            this.scene.start(newKey);
+        }, this);
+        console.log(newKey);
         this.add([box, message, box2, message2]);
         
     }
