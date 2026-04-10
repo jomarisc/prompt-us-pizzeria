@@ -4,7 +4,7 @@ export class Congrats extends Phaser.Scene{
     }
 
     preload() {
-        this.load.image('the-pizza', './assets/pizza.png');
+        this.load.image('pizza', './assets/pizza.png');
 
     }
 
@@ -19,7 +19,7 @@ export class Congrats extends Phaser.Scene{
             fontSize: '50px'
         }).setOrigin(0.5);
 
-        this.add.image(960, 750, 'the-pizza').setScale(0.15).setOrigin(0.5);
+        this.add.image(960, 750, 'pizza').setScale(0.15).setOrigin(0.5);
 
     }
 
