@@ -14,9 +14,9 @@ const config = {
     pixelArt: false,
     antialias: true,
     scene: [
-        Pizzeria,
-        PizzeriaGrant,
-        PizzeriaMedia,
+        // Pizzeria,
+        // PizzeriaGrant,
+        // PizzeriaMedia,
         Congrats
     ],
     scale: {
