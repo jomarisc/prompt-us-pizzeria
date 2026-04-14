@@ -4,19 +4,11 @@
   uses: cloudflare/pages-action@v1.5.0
   with:
     # Cloudflare API Token
-    apiToken: 
+    apiToken: CLOUDFLARE_API_TOKEN
     # Cloudflare Account ID
-    accountId: 
+    accountId: CLOUDFLARE_ACCOUNT_ID
     # The name of the Pages project to upload to
-    projectName: 
+    projectName: prompt-us-pizzeria
     # The directory of static assets to upload
-    directory: 
-    # GitHub Token
-    gitHubToken: # optional
-    # The name of the branch you want to deploy to
-    branch: # optional
-    # The working directory in which to run Wrangler
-    workingDirectory: # optional
-    # The version of Wrangler to use
-    wranglerVersion: # optional, default is 2
+    directory: /
           
