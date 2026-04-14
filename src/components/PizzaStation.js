@@ -1,4 +1,4 @@
-import { Topping } from "./topping.js";
+import { Topping } from "./Topping.js";
 export class PizzaStation extends Phaser.GameObjects.Container {
     constructor(scene, x, y, width, height, checklist) {
         super(scene, x, y);
